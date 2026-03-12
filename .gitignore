@@ -1,6 +1,7 @@
 # Build directory
 
 build/*
+!build/.gitkeep
 
 # LaTeX auxiliary files
 
