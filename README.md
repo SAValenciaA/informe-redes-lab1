@@ -141,6 +141,13 @@ HTTPS
 Login with a web browser
 ```
 
+Y agreguar tu identidad a git
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
+```
+
 ---
 
 ## 4.4 Clonar el repositorio
