@@ -7,6 +7,8 @@ Una vez tengas todo listo para empezar a editar el documento:
 (`marco_teorico`, `desarrollo`, `conclusiones`, etc.)
 
 ``` bash
+git branch [TU_RAMA]
+git push -u origin [TU_RAMA]
 git checkout [TU_RAMA]
 ```
 
