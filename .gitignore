@@ -5,6 +5,7 @@ build/
 # LaTeX auxiliary files
 
 *.aux
+*.pdf
 *.bbl
 *.bcf
 *.blg
