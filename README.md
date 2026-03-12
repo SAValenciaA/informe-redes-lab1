@@ -158,7 +158,7 @@ gh repo clone SAValenciaA/informe-redes-lab1
 Después de clonar el repositorio:
 
 ```bash
-cd nombre-del-repositorio
+cd informe-redes-lab1
 ```
 
 Si el proyecto no se abrió automáticamente en VS Code, se puede abrir con:
