@@ -1,98 +1,460 @@
 % !TEX root =../main.tex
+
+\newpage
 \section{Dessarrollo de la Practica}
 
-%%%%%%%%%%% PRACTICA FISICA %%%%%%%%%%%%%%
-\subsection{Practica fisica}
+\subsection{Comandos usados}
+Los comandos se tomaron principalmente de \cite{comandos_cisco} y se usaron especificamente
+\begin{minted}{bash}
+# Para mostrar el sistema operativo, version y direccion fisica
+Router> show version 
+# Para mostrar que interfaces
+Router> show ip interfaces brief 
+# Para mostrar las direcciones de las interfaces
+Router> show interfaces 
+\end{minted}
+Adicionalmente, recomendado por el docente encargado, si algo de lo anterior falla en mostrar la 
+informacion.
+\begin{minted}{bash}
+Router> show tech-support 
+\end{minted}
+Este ultimo comando se uso especialmente las direcciones fisicas.
 
-\paragraph{Switch: 4531 Series}
-\begin{itemize}
-  \item Modelo de equipo:
-  \item Marca:
-  \item Tipo de equipo:
-  \item Equipo modular:
-  \item Número de serie:
-  \item Qué interfaces físicas hay en el equipo:
-    \begin{itemize}
-      \item FastEthernet
-    \end{itemize}
-  \item Numeración de las interfaces físicas:
-  \item Dirección física asociada al dispositivo:
-  \item Dirección física de cada puerto:
-  \item Sistema operativo y versión:
-\end{itemize}
-Foto del equipo
+Tambien, dado que uno de los dispositivos no era Cisco, se uso la guia de usuario
+\cite{3com4500_config_manual} para encontrar los comandos requeridos:
+\begin{minted}{bash}
+# Para mostrar el sistema operativo, version y direcciones fisica
+Router> display version
+Router> display ip interface
+\end{minted}
 
-\paragraph{Switch: 2960 Series}
-\begin{itemize}
-  \item Modelo de equipo:
-  \item Marca:
-  \item Tipo de equipo:
-  \item Equipo modular:
-  \item Número de serie:
-  \item Qué interfaces físicas hay en el equipo:
-    \begin{itemize}
-      \item FastEthernet
-    \end{itemize}
-  \item Numeración de las interfaces físicas:
-  \item Dirección física asociada al dispositivo:
-  \item Dirección física de cada puerto:
-  \item Sistema operativo y versión:
-\end{itemize}
-Foto del equipo
+\subsection{Informacion recolectada}
 
-\paragraph{Switch: 4531 Series}
-\begin{itemize}
-  \item Modelo de equipo:
-  \item Marca:
-  \item Tipo de equipo:
-  \item Equipo modular:
-  \item Número de serie:
-  \item Qué interfaces físicas hay en el equipo:
-    \begin{itemize}
-      \item FastEthernet
-    \end{itemize}
-  \item Numeración de las interfaces físicas:
-  \item Dirección física asociada al dispositivo:
-  \item Dirección física de cada puerto:
-  \item Sistema operativo y versión:
-\end{itemize}
-Foto del equipo
+\subsubsection*{Capa de enlace de Datos}
 
-\paragraph{Switch: 2960 Series}
+\paragraph{Switch: 4500 Series}
 \begin{itemize}
-  \item Modelo de equipo:
-  \item Marca:
-  \item Tipo de equipo:
-  \item Equipo modular:
-  \item Número de serie:
-  \item Qué interfaces físicas hay en el equipo:
-    \begin{itemize}
-      \item FastEthernet
-    \end{itemize}
-  \item Numeración de las interfaces físicas:
-  \item Dirección física asociada al dispositivo:
+  \item Modelo de equipo: \code{4531 Series Switch}
+  \item Marca: Cisco
+  \item Tipo de equipo: Switch
+  \item Equipo modular: Si
+  \item Número de serie: No se encontro por ningun metodo
+  \item Interfaces fisicas:  24 FastEthernet y 2 GigabitEthernet
   \item Dirección física de cada puerto:
-  \item Sistema operativo y versión:
+    \begin{itemize}
+      \item Fast Ethernet: \hex{b4a8.b95d.3201} hasta \hex{b4a8.b95d.3218} inclusivo.
+      \item GigabitEthernet: \hex{b4a8.b95d.3219} hasta \hex{b4a8.b95d.321a} inclusivo.
+    \end{itemize}
+  \item Dirección física asociada al dispositivo: \hex{B4:A8:DB9:5D:32:00}
+  \item Sistema y version del dispositivo
+    \begin{minted}{bash}
+Cisco IOS software, 
+c2920 Software (C2960-LANBASEK9-M), 
+Vesion 15.2(2)E7, 
+RELEASE SOFTWARE (fc3).
+    \end{minted}
 \end{itemize}
-Foto del equipo
+
+\paragraph{Switch: 2900 Series}
+\begin{itemize}
+  \item Modelo de equipo: \code{2960 Series switch}
+  \item Marca: 3com
+  \item Tipo de equipo: Switch
+  \item Equipo modular: no
+  \item Número de serie: 3CR17562-91
+  \item Interfaces: 48 Ethernet y 4 GigaBitEthernet 
+    (repetidos por software)
+  \item Numeración de las interfaces físicas:
+    \begin{itemize}
+      \item Ethernet: \hex{00222-5735-8f83} hasta \hex{0022-5735-8fb2}
+      \item GigabitEthernet: \hex{00222-5735-8fb3} y \hex{0022-5735-8fb4}
+    \end{itemize}
+  \item Dirección física asociada al dispositivo: \hex{002257378F80}
+  \item Sistema operativo y versión: 
+    \begin{minted}{bash}
+    Switch 4500 50-port software Version 3Com Os V3.03.00s168
+    \end{minted}
+\end{itemize}
+\textbf{Nota:} 2 interfaces GigabitEthernet existen solo virtualmente. Por esto
+mismo hay 2 direcciones fisicas para GigabitEthernet pero hay 4 interfaces
+acorde al item anterior.
+
+\subsubsection*{Capa de Red}
+
+\paragraph{Router: 4300 Series}
+\begin{itemize}
+  \item Modelo: \code{4321 Series Router}
+  \item Marca: Cisco
+  \item Tipo de equipo: Router
+  \item Equipo modular: Si
+  \item Número de serie: No se encontro por ningun metodo
+  \item Interfaces fisicas: 3 GigaBitEthernet, 2 Serial
+  \item Dirección física de cada puerto:
+    \begin{itemize}
+      \item \verb|GigabitEthernet0/0/0 50f7.228f.6da0|
+      \item \verb|GigabitEthernet0/0/0 50f7.228f.6da1|
+      \item \verb|GigabitEthernet0     50f7.228f.6e2f|
+      \item \verb|Serial0/1/0|
+      \item \verb|Serial0/1/1|
+    \end{itemize}
+  \item Sistema operativo y versión:
+    \begin{minted}{bash}
+Cisco IOS XE Software, 
+Version 03.16.04b.S -Extended Support Release y Cisco IOS softare, 
+version 15.5(3)S4b.
+    \end{minted}
+\end{itemize}
+
+\paragraph{Router: 2900 Series}
+\begin{itemize}
+  \item Modelo de equipo: \code{CISCO2901/K9}
+  \item Marca: Ciscco
+  \item Tipo de equipo: Router
+  \item Equipo modular: Si
+  \item Número de serie: \code{***98362232312} (incompleto)
+  \item Interfaces físicas: 2 GigabitEthernet
+  \item Dirección física de cada puerto: 
+  \begin{itemize}
+    \item GigabitEthernet 0/0: \hex{0078.884e.4410}
+    \item GigabitEthernet 0/1: \hex{0078.884e.4411}
+  \end{itemize}
+
+  \item Dirección física asociada al dispositivo:
+  \item Sistema operativo y versión:
+    \begin{minted}{bash}
+Cisco IOS Software, 
+C2900 Software (C2900-UNIVERSALK9-M), 
+Version 15.4(3)M3, 
+RELEASE SOFTWARE (fc2)
+    \end{minted}
+\end{itemize}
+
+\subsubsection*{Capa de Transporte}
 
 \paragraph{Firewall: ASA5506}
 \begin{itemize}
-  \item Modelo de equipo:
-  \item Marca:
-  \item Tipo de equipo:
-  \item Equipo modular:
-  \item Número de serie:
-  \item Qué interfaces físicas hay en el equipo:
-    \begin{itemize}
-      \item FastEthernet
-    \end{itemize}
-  \item Numeración de las interfaces físicas:
-  \item Dirección física asociada al dispositivo:
-  \item Dirección física de cada puerto:
-  \item Sistema operativo y versión:
-\end{itemize}
-Foto del equipo
+  \item Modelo de equipo: \code{ASA 5506-X}
+  \item Marca: Cisco
+  \item Tipo de equipo: Firewall
+  \item Equipo modular: No
+  \item Número de serie: \code{JAD22460UX3}
+  \item Interfaces físicas: GigabitEthernet
+  \item Dirección física de cada puerto: 2 GigabitEthernet y 1 Management
+  \begin{itemize}
+    \item GigabitEthernet 1/1 — 1/8: \hex{70b3.17bd.66dc} hasta \hex{70b3.17bd.66e3}
+    \item Management1/1: \hex{70b3.17bd.66db}
+  \end{itemize}
 
-%%%%%%%%%%% PRACTICA SIMULADA %%%%%%%%%%%%%%
-\subsection{Practica simulada}
+  \item Dirección física asociada al dispositivo: \hex{70b3.17bd.66da}
+  \item Sistema operativo y versión:
+    \begin{minted}{bash}
+      Cisco adaptive Security appliance software Version 9.8/2,
+      Firepower Etensible Operating System Version 2.2(2.52), 
+      Device Manager Version 7.8(2)
+    \end{minted}
+\end{itemize}
+
+\subsection{Informacion recolectada del simulador}
+
+\subsubsection*{Capa de enlace de Datos}
+
+\paragraph{Switch: 2960}
+\begin{itemize}
+  \item Modelo del equipo: \code{Cisco WS-C290-24TTT-L}
+  \item Marca: Cisco
+  \item Tipo de equipo: Switch
+  \item Equipo modular: No
+  \item Número de serie: \code{FOC10093R12}
+  \item Interfaces físicas: 24 FastEthernet, 2 GigabitEthernet
+  \item Dirección física de cada puerto:
+  \begin{itemize}
+    \item FastEthernet 0/1–0/24: \hex{00e0.b05a.dd01} hasta \hex{00e0.b05a.dd18}
+    \item GigabitEthernet 0/1–0/2: \hex{00e0.b05a.dd19}, \hex{00e0.b05a.dd1a}
+  \end{itemize}
+  \item Dirección física asociada al dispositivo:
+  % No se encontro en el simulador
+  \item Sistema operativo y versión:
+\begin{minted}{bash}
+Cisco IOS Software,
+C2960 Software (C2960-LANBASEK9-M),
+Version 15.0(2)SE4,
+RELEASE SOFTWARE (fc1)
+\end{minted}
+\end{itemize}
+
+\subsubsection*{Capa de Red}
+
+\paragraph{Router: 4321}
+\begin{itemize}
+  \item Modelo del equipo: \code{Cisco ISR4321/K9}
+  \item Marca: Cisco
+  \item Tipo de equipo: Router
+  \item Equipo modular: Sí
+  \item Número de serie: 
+  % No disponible en el simulador
+  \item Interfaces físicas: 2 GigabitEthernet
+  \item Número de interfaces: 2
+  \item Dirección física de cada puerto:
+  \begin{itemize}
+    \item GigabitEthernet 0/1–0/2: \hex{0030.f26c.bd01} hasta \hex{0030.f26c.bd02}
+  \end{itemize}
+  \item Dirección física asociada al equipo:
+  % No encontrada
+  \item Sistema operativo y versión:
+\begin{minted}{bash}
+Cisco IOS XE Software Version 03.16.05.S
+Extended Support Release
+Cisco IOS Software (X86_64_LINUX_IOSD-UNIVERSALK9-M)
+Version 15.5(3)S5
+RELEASE SOFTWARE (fc2)
+\end{minted}
+\end{itemize}
+
+\paragraph{Router: 2901}
+\begin{itemize}
+  \item Modelo del equipo: \code{C2900-UNIVERSALK9-M}
+  \item Marca: Cisco
+  \item Tipo de equipo: Router
+  \item Equipo modular: Sí
+  \item Número de serie: \code{FTX152400KS}
+  \item Interfaces físicas: 2 GigabitEthernet
+  \item Dirección física de cada puerto:
+  \begin{itemize}
+    \item GigabitEthernet 0/0: \hex{0006.2a36.ba01}
+    \item GigabitEthernet 0/1: \hex{0006.2a36.ba02}
+  \end{itemize}
+  \item Dirección física asociada al dispositivo:
+  % No encontrada
+  \item Sistema operativo y versión:
+\begin{minted}{bash}
+Cisco IOS Software
+C2900 Software (C2900-UNIVERSALK9-M)
+Version 15.1(4)M4
+RELEASE SOFTWARE (fc2)
+\end{minted}
+\end{itemize}
+
+\subsubsection*{Capa de Transporte}
+
+\paragraph{Firewall: ASA5506-X}
+\begin{itemize}
+  \item Modelo del equipo: \code{ASA5506}
+  \item Marca: Cisco
+  \item Tipo de equipo: Firewall
+  \item Equipo modular: No
+  \item Número de serie: \code{ASA5506}
+  \item Interfaces físicas: 8 GigabitEthernet, 1 Management
+  \item Dirección física de cada puerto:
+  \begin{itemize}
+    \item GigabitEthernet 1/1–1/8: \hex{0030.A3B9.C601} hasta \hex{0030.A3B9.C608}
+    \item Management: \hex{0030.A3B9.C609}
+  \end{itemize}
+  \item Dirección física asociada al equipo:
+  % No encontrada
+  \item Sistema operativo y versión:
+\begin{minted}{bash}
+Cisco Adaptive Security Appliance Software Version 9.6(1)
+Device Manager Version 7.6(1)
+\end{minted}
+\end{itemize}
+
+\subsection{Evidencias}
+
+Las siguientes imágenes muestran la evidencia obtenida directamente de los
+equipos físicos mediante la ejecución de comandos en la interfaz de línea de
+comandos de cada dispositivo. Estas capturas permiten verificar la información
+presentada anteriormente sobre modelo, interfaces, direcciones físicas y
+sistema operativo.
+
+\subsubsection*{Switch 2960}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/evidencias/switches/2960/prueba_numero_interfaces.png}
+\caption{Salida del comando que muestra el número de interfaces disponibles en el switch Cisco 2960.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/evidencias/switches/2960/prueba_direccion_fisica_por_puerto.png}
+\caption{Direcciones MAC asociadas a las interfaces del switch 2960.}
+\end{figure}
+
+
+\subsubsection*{Router 2901}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/evidencias/routers/2901/interface.png}
+\caption{Listado de interfaces disponibles en el router Cisco 2901.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/evidencias/routers/2901/sistema-operativo-modelo-serial.png}
+\caption{Salida del comando \texttt{show version} donde se observa el modelo del equipo, número de serie y versión del sistema operativo del router 2901.}
+\end{figure}
+
+
+\subsubsection*{Router 4321}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/evidencias/routers/4321/prueba_giga_address.png}
+\caption{Direcciones físicas asociadas a las interfaces GigabitEthernet del router 4321.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/evidencias/routers/4321/prueba_serial_address.png}
+\caption{Información de interfaces seriales y sus direcciones físicas en el router 4321.}
+\end{figure}
+
+
+\subsubsection*{Firewall ASA5506-X}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{figures/evidencias/firewalls/firewall_interfaces.png}
+\caption{Listado de interfaces disponibles en el firewall Cisco ASA5506-X.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{figures/evidencias/firewalls/firewall_direccion_fisica.png}
+\caption{Dirección MAC principal asociada al firewall ASA5506-X.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{figures/evidencias/firewalls/firewall_direccion_fisica_por_puerto.png}
+\caption{Direcciones físicas asignadas a cada puerto del firewall.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{figures/evidencias/firewalls/firewall_system_version.png}
+\caption{Salida del comando que muestra la versión del sistema operativo del firewall ASA5506-X.}
+\end{figure}
+
+\subsection{Evidencias del simulador}
+
+Las siguientes imágenes corresponden a capturas obtenidas dentro del simulador
+(Packet Tracer), donde se ejecutaron los comandos equivalentes para obtener la
+información presentada en la sección de información recolectada del simulador.
+
+\subsubsection*{Switch 2960}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/switch-2960/sistema-operativo.png}
+\caption{Salida del comando \texttt{show version} en el switch 2960 dentro del simulador, donde se observa el sistema operativo del dispositivo.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/switch-2960/interfaces.png}
+\caption{Listado de interfaces disponibles en el switch 2960 dentro del simulador.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/switch-2960/direcciones.png}
+\caption{Direcciones MAC asociadas a las interfaces del switch 2960 en el simulador.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/switch-2960/modelo-mac.png}
+\caption{Información adicional del dispositivo donde se observa el modelo del equipo y su dirección física base.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/switch-2960/numero-serial.png}
+\caption{Visualización del número de serie del switch 2960 dentro del simulador.}
+\end{figure}
+
+
+
+\subsubsection*{Router 2901}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/router-2901/sistema-operativo.png}
+\caption{Información del sistema operativo del router 2901 obtenida desde el simulador.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/router-2901/interfaces.png}
+\caption{Listado de interfaces disponibles en el router 2901 dentro del simulador.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/router-2901/addresses.png}
+\caption{Direcciones físicas asociadas a las interfaces del router 2901.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/router-2901/serial.png}
+\caption{Número de serie del router 2901 mostrado en el simulador.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/router-2901/modular.png}
+\caption{Aqui se puede ver que el router es modular.}
+\end{figure}
+
+
+
+\subsubsection*{Router 4321}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/router-4321/sistema-operativo.png}
+\caption{Información del sistema operativo del router 4321 obtenida desde el simulador.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/router-4321/interfaces.png}
+\caption{Listado de interfaces disponibles en el router 4321 dentro del simulador.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/router-4321/modelo.png}
+\caption{Visualización del modelo del router 4321 dentro del simulador.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/router-4321/modular.png}
+\caption{Aqui se puede ver como el router es modular.}
+\end{figure}
+
+
+
+\subsubsection*{Firewall ASA5506-X}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/firewall-5506/sistema-operativo-interfaces-modelo.png}
+\caption{Información general del firewall ASA5506-X dentro del simulador, donde se observan el modelo, sistema operativo e interfaces.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/firewall-5506/serial.png}
+\caption{Visualización del número de serie del firewall ASA5506-X en el simulador.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/evidencias-simulador/firewall-5506/modular.png}
+\caption{Aqui se puede ver que el firewall no es modular.}
+\end{figure}

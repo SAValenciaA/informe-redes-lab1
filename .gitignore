@@ -2,6 +2,7 @@
 
 build/*
 !build/.gitkeep
+_minted/
 
 # LaTeX auxiliary files
 
