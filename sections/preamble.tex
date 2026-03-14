@@ -16,6 +16,11 @@
 \usepackage{bookmark}
 \usepackage{hyperref}
 \usepackage{xurl}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{minted}
+\usepackage{placeins}
+\usepackage{subcaption}
 
 \usepackage{geometry}
 \geometry{margin=2.5cm}
@@ -26,3 +31,24 @@
 \usepackage[style=ieee, backend=biber]{biblatex}
 
 \addbibresource{./referencias.bib}
+
+\newcommand{\hex}[1]{\texttt{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\usemintedstyle{tango}
+\definecolor{codeBg}{HTML}{282822}
+\definecolor{textBg}{HTML}{1c1c17}
+
+\setminted{
+    breaklines=true,
+    encoding=utf8,
+    fontsize=\footnotesize,
+    frame=none,
+}
+
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+\BeforeBeginEnvironment{minted}%
+     {\begin{tcolorbox}}%
+\AfterEndEnvironment{minted}
+   {\end{tcolorbox}}%
