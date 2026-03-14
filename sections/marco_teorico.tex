@@ -1,42 +1,68 @@
 % !TEX root =../main.tex
 \section{Marco Teórico}
 
-Por \cite{commandos_cisco} sabemos que ...
-
 \subsection{Modelo OSI}
+  El modelo OSI(Open Systems Interconnection) es un modelo de referencia\cite{ISO_OSI} 
+  creado por International Organization for Standardization(ISO) para la 
+  comunicación de diversos sistemas computacionales\cite{cloudflare_OSI}, 
+  se encuentra dividido en 7 capas que describen funciones especificas 
+  y proveen servicios a las capas superiores.
 
   \paragraph{1. Capa Física}
+  La capa física tiene como función especificar y describir las caracteristicas 
+  fisica de los medios y las conexiones usadas para la tranmisión de información
+  como señales electricas o electromagneticas(opticos, inalambricos).
+  Para cada medio se describen sus caracteristicas mecanicas y electricas, el como codifica la información,
+  su ancho de banda y distancias maximas.\cite{netacad_physical_layer}
+  En esta capa se pueden ubicar los estandares Ethernet, WLAN(WirelessLAN), medios como cables UTP, fibra óptica y
+  conectores como el RJ45
   \paragraph{2. Capa de Enlace de Datos}
+  Tiene como objetivo proporcionar transferencia de datos confiable entre dos dispositivos 
+  conectados físicamente. Se encarga de corregir errores ocurridos en la capa física y provee
+  acceso a esta para las capas superiores. Además incluye un direccionamiento físico para el envio
+  de los datos entre dispositivos.\cite{osi_windows}
+  Puede dividirse en subcapas MAC(Media Access Control) y LLC(Logical Link Control)
+  que se encargan de : el control del medio físico, identificandolo con una dirección y corrigiendo errores;
+  y la transferencia de información sin errores, control de flujo para los datos y la retransmisión.
+  En esta capa los datos(PDU) se denominan "frames" que contienen la información enviada desde la capa de redes
+  más el direccionamiento MAC.
+
   \paragraph{3. Capa de Red}
+  Es la capa encargada de la comunicación entre diferentes redes, se encarga encarga de el ruteo
+  para enviar un mensaje desde el host productor hasta el host destino, esto mediante la dirección 
+  lógica asignada a cada equipo. Utiliza datos(PDU) denominados "packets" que contiene información
+  de capa 4 más direccionamiento IP(Internet Protocol).\cite{cloudflare_OSI}
   \paragraph{4. Capa de Transporte}
+  La capa de transporte se encarga de segmentar la información y secuenciarla para el para luego enviarla
+  en capas inferiores, además de recomponerla cuando la reciba, implementa control de flujo para regular
+  la velocidad de transmisión y corrección de errores para asegurar la comunicación de la información.\cite{osi_aws}
+  Los protocolos TCP(Transmission Control Protocol) y UDP(User Datagram Protocol) son los principales
+  actores en la capa de transporte.
   \paragraph{5. Capa de Sesión}
+  La capa de sesión se encarga de establecer, abrir y cerrar comunicaciones entre maquinas,
+  maneja la sincronización para contenter interrupciones en la conexión y control de tráfico.\cite{osi_aws}
   \paragraph{6. Capa de Presentación}
+  Capa encargada de la traducción, encriptación y compresión de datos, para ser enviados capa arriba o capa abajo.
+  Los datos recibidos desde la capa 5 son convertidos a formatos digeribles por la capa de aplicación como lo son HTML, CSV; 
+  y los datos recibidos desde la capa 7 son comprimidos y encriptados antes de ser enviados a la capa 5.
   \paragraph{7. Capa de Aplicación}
-
+  Es la capa que tiene interacción directa con el usuario incluye aplicaciones de software como los buscadores,
+  transferencia de archivos, conexión remota, llamadas, streaming.
+  Algunos protocolos utilizados en esta capa son 
+  HTTPS(Hypertext Transfer Protocol Secure), SSH(Secure Shell) o FTP(File Transfer Prolocol)\cite{osi_Haryana_India}
 \subsection{Dispositivos de networking}
-
   \paragraph{Router}
+  Un router es un dispositivo encargado de enviar mensajes de una red a otra, esto lo hace con funciones de capa 3,
+  leyendo la dirección IP contenida en el "packet" y enviando la información hacia el siguiente dispositivo que permita
+  al mensaje llegar a su destino, mediante funciones de capa 2. Se comunican mediante Ethernet, fibra optica o WLAN y necesitan ser configurados antes de ser
+  utilizados, tienen su propia dirección IP la cual usan para ser identificados por otros dispositvos.\cite{cloudflare_router}
   \paragraph{Switch}
+  Un switch es un dispositivo encargado de enviar mensajes al interior de una red, utiliza funciones de capa 2 para enviar mensajes entre
+  dispositivos, mediante el uso de el direccionamiento MAC, el switch conecta directamente 2 dispositivos de red manteniendo el ancho de banda.\cite{cloudflare_switch}
+  Un switch se comunica mediante Ethernet o fibra optica, no requiere de configuración para hacer su trabajo 
+  sin embargo si requiere hacer más tareas, como monitoreo, debe configurarse según se requiera.
   \paragraph{Hub}
+  Un hub es un dispositivo que replica el trafico que recibe, reenviando los mensajes a todos los dispositivos conectados a el,
+  utiliza unicamente funciones de capa 1 por lo que se puede considerar como un cable más.
   \paragraph{Cliente o Computador}
   \paragraph{Firewall}
-
-\subsection{Interfaces}
-
-  \subsubsection{Interfaces Fisicas}
-
-    \paragraph{Ethernet}
-    \paragraph{Serial}
-    \paragraph{USB} % Saltable
-
-  \subsubsection{Interfaces Logicas}
-
-    \paragraph{Virtual LAN}
-    \paragraph{Loopback} % Saltable
-    \paragraph{Tunnel} % Saltable
-
-  \subsubsection{Interfaces de Gestión}
-
-    \paragraph{Consola}
-    \paragraph{Web} % Saltable
-    \paragraph{SSH}
