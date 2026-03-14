@@ -1,2 +1,42 @@
 % !TEX root =../main.tex
 \section{Conclusiones}
+Para construir una infraestructura de red sólida
+y funcional, es necesario conocer los modelos de
+referencia diseñados para comprender el rol del
+hardware. Bajo este enfoque, el modelo OSI
+constituye el elemento clave para estandarizar
+la variedad de equipos y entender su impacto
+funcional en la red.
+\medskip
+A través de este estudio, fue posible conocer de
+primera mano la apariencia y el modo de operación
+de diversos dispositivos pertenecientes a las capas
+del modelo OSI, logrando una familiarización directa
+con sus puertos físicos e interfaces de comandos. A 
+partir de estos conocimientos, es posible analizar 
+de manera integral las similitudes y diferencias 
+entre los equipos estudiados, permitiendo concluir 
+sobre su desempeño y relevancia dentro del contexto 
+de un modelo de red.
+\bigskip
+
+\begin{itemize}
+    \item \textbf{Capa 1: \textit{Capa física}}
+    \newline
+    En la capa física se sitúan los \textit{hubs} o concentradores, los cuales funcionan como dispositivos básicos al replicar la información hacia múltiples puertos sin aplicar direccionamiento lógico. Esta característica los distingue de los equipos de capas superiores del modelo OSI con los que se trabajó en la práctica. A pesar de su simplicidad operativa, existe una variedad notable entre los modelos disponibles; las diferencias principales radican en la presencia de puertos seriales RJ45, la distribución de interfaces e indicadores frontales, así como en aspectos de rendimiento, gestión de velocidad y vigencia tecnológica del equipo.
+
+\item \textbf{Capa 2: \textit{Capa de enlace de datos}}
+    \newline
+    En la capa de enlace de datos se evidencia una mayor complejidad en el montaje de redes mediante el uso de \textit{switches} o conmutadores, los cuales gestionan el envío de información de manera eficiente. El estudio de estos dispositivos permitió determinar que la estandarización, más que referirse a una sintaxis rígida de comandos o a una marca específica, consiste en el cumplimiento de funciones técnicas definidas que permitan al administrador realizar las configuraciones necesarias. La exploración de equipos con características distintivas entre fabricantes como 3Com y Cisco refuerza el concepto de una estructura de red integrada bajo los lineamientos del modelo OSI.
+
+\item \textbf{Capa 3: \textit{Capa de red}}
+    \newline
+    A medida que se asciende en las capas del modelo OSI, los equipos desempeñan roles más sofisticados, permitiendo una gestión del tráfico de datos altamente eficiente y detallada a través de los \textit{routers} o enrutadores. Mediante la interacción con equipos de alto desempeño, como los modelos \textbf{Cisco 4321} y la serie \textbf{Cisco 2900}, fue posible observar un amplio espectro de utilidades y elementos diferenciadores. Estas variaciones abarcan desde el factor de forma y los puertos de alimentación hasta el sistema operativo y la disponibilidad de interfaces específicas; no obstante, ambos modelos convergen en la capacidad de ofrecer herramientas versátiles para el cumplimiento de tareas de enrutamiento bajo los estándares de conectividad global.
+
+\item \textbf{Capa 4: \textit{Capa de transporte}}
+    \newline
+    En este nivel, la complejidad de la red se orienta hacia el control de flujo, la segmentación y la seguridad de las conexiones mediante el uso de dispositivos de inspección avanzada. La práctica con el firewall físico \textbf{Cisco ASA 5506-X} permitió comprender cómo la estandarización de la Capa 4 facilita el filtrado de tráfico basado en puertos y protocolos de transporte (TCP/UDP). A diferencia de los equipos de capas inferiores, el uso del ASA 5506-X destaca la importancia de la seguridad perimetral y la administración de políticas de acceso, demostrando que la infraestructura no solo debe garantizar la conectividad, sino también la integridad y el control del tráfico que transita por la red.
+\end{itemize}
+
+\medskip
+Finalmente, cabe destacar la importancia de la experimentación física frente a entornos virtuales. Si bien herramientas de simulación como \textit{Packet Tracer} son fundamentales para comprender la lógica de red de manera estructurada y accesible, la interacción directa con el hardware revela matices y retos técnicos que a menudo se omiten en la emulación. A pesar de estas diferencias operativas, la integración de ambos métodos permite consolidar una visión completa del diseño de redes, reafirmando que el dominio de la infraestructura real, respaldado por la teoría del modelo OSI, es el único camino para garantizar la eficiencia y escalabilidad en entornos de telecomunicaciones modernos.
